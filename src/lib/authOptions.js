@@ -1,5 +1,5 @@
 import { dbConnect } from "./dbConnect";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {

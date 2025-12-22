@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import Link from 'next/link';
+import LoginButton from '../auth/LoginButton';
 
 const Navbar = () => {
     const links = <>
@@ -35,7 +36,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                <button className="btn btn-info">Login</button>
+                <LoginButton/>
                 <Link href="/register" className="btn btn-accent">Register</Link>
             </div>
         </div>

@@ -1,0 +1,9 @@
+"use client";
+import React from 'react';
+import { signIn } from "next-auth/react";
+
+const LoginButton = () => {
+    return <button className="btn btn-info" onClick={() => signIn()}>Login</button>;
+};
+
+export default LoginButton;
