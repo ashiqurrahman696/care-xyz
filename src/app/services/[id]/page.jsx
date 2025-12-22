@@ -14,6 +14,7 @@ const ServiceDetailsPage = async({params}) => {
                 <h2 className="text-5xl font-bold">{service.service_name}</h2>
                 <p>{service.description}</p>
                 <p><strong>Service Charge:</strong> {service.pricing.currency} ${service.pricing.rate}/{service.pricing.unit}</p>
+                <button className="btn btn-accent">Book Service</button>
             </div>
         </div>
     );
