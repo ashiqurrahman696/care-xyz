@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const ServiceCard = ({service}) => {
@@ -17,7 +18,7 @@ const ServiceCard = ({service}) => {
                 <h2 className="card-title">{service.service_name}</h2>
                 <p className="line-clamp-3">{service.description}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">View Details</button>
+                    <Link href={`/services/${service._id}`} className="btn btn-primary">View Details</Link>
                 </div>
             </div>
         </div>
