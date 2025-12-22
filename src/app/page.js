@@ -1,6 +1,7 @@
 import About from "@/components/home/About";
 import Banner from "@/components/home/Banner";
 import Overview from "@/components/home/Overview";
+import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Banner/>
       <About/>
       <Overview/>
+      <Testimonials/>
     </div>
   );
 }
