@@ -1,4 +1,5 @@
 import { getMyBookings } from '@/actions/server/booking';
+import Link from 'next/link';
 import React from 'react';
 
 const MyBookingPage = async() => {
@@ -17,6 +18,7 @@ const MyBookingPage = async() => {
                             <th>Location</th>
                             <th>Total Cost</th>
                             <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +29,12 @@ const MyBookingPage = async() => {
                             <td>{booking.address}</td>
                             <td>{booking.cost}</td>
                             <td>{booking.status}</td>
+                            <td>
+                                <div className="flex gap-2">
+                                    <Link href={`/services/${booking.service_id}`} className="btn btn-info">View Details</Link>
+                                    <button className="btn btn-error">Cancel Booking</button>
+                                </div>
+                            </td>
                         </tr>)}
                     </tbody>
                 </table>
