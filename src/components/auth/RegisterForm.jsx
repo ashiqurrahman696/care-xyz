@@ -2,7 +2,6 @@
 import { postUser } from '@/actions/server/auth';
 import { showAlert } from '@/utils/showAlert';
 import React from 'react';
-import { FcGoogle } from "react-icons/fc";
 import { SocialButton } from './SocialButton';
 
 const RegisterForm = () => {
