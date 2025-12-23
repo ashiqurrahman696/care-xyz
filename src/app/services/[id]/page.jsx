@@ -1,5 +1,6 @@
 import { getSingleService } from '@/actions/server/service';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const ServiceDetailsPage = async({params}) => {
@@ -14,7 +15,7 @@ const ServiceDetailsPage = async({params}) => {
                 <h2 className="text-5xl font-bold">{service.service_name}</h2>
                 <p>{service.description}</p>
                 <p><strong>Service Charge:</strong> {service.pricing.currency} ${service.pricing.rate}/{service.pricing.unit}</p>
-                <button className="btn btn-accent">Book Service</button>
+                <Link href={`/booking/${id}`} className="btn btn-accent">Book Service</Link>
             </div>
         </div>
     );
