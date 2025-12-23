@@ -1,6 +1,7 @@
 import { dbConnect } from "./dbConnect";
 import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
     // Configure one or more authentication providers
@@ -21,6 +22,10 @@ export const authOptions = {
                 if(isPasswordOk) return user;
                 return null;
             }
+        }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
         }),
     ],
     callbacks: {

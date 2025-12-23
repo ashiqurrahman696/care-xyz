@@ -2,6 +2,8 @@
 import { postUser } from '@/actions/server/auth';
 import { showAlert } from '@/utils/showAlert';
 import React from 'react';
+import { FcGoogle } from "react-icons/fc";
+import { SocialButton } from './SocialButton';
 
 const RegisterForm = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +55,7 @@ const RegisterForm = () => {
                         <input type="password" name="password" className="input w-full" placeholder="Password" />
                         <button className="btn btn-info mt-4">Register</button>
                     </form>
+                    <SocialButton/>
                 </div>
             </div>
         </div>
