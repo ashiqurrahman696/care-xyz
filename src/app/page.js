@@ -5,7 +5,7 @@ import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 pb-6">
       <Banner/>
       <About/>
       <Overview/>
