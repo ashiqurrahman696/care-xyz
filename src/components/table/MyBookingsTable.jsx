@@ -1,8 +1,17 @@
 "use client";
+import { updateBookingStatus } from '@/actions/server/booking';
+import { showAlert } from '@/utils/showAlert';
 import Link from 'next/link';
 import React from 'react';
 
 const MyBookingsTable = ({myBookings}) => {
+    const handleCancelBooking = async(id, status) => {
+        const result = await updateBookingStatus(id, status);
+        if(!result.success){
+            return showAlert("Error", result.message, "error");
+        }
+        showAlert("Success", result.message, "success");
+    }
     return (
         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
             <table className="table table-zebra">
@@ -28,7 +37,7 @@ const MyBookingsTable = ({myBookings}) => {
                         <td>
                             <div className="flex gap-2">
                                 <Link href={`/services/${booking.service_id}`} className="btn btn-info">View Details</Link>
-                                <button className="btn btn-error">Cancel Booking</button>
+                                <button onClick={() => handleCancelBooking(booking._id, "cancelled")} className="btn btn-error">Cancel Booking</button>
                             </div>
                         </td>
                     </tr>)}

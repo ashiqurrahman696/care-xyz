@@ -2,7 +2,10 @@
 
 import { authOptions } from "@/lib/authOptions";
 import { dbConnect } from "@/lib/dbConnect";
+import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
+import { cache } from "react";
 
 export const getMyBookings = async() => {
     const {user} = (await getServerSession(authOptions)) || {};
@@ -30,3 +33,29 @@ export const postBooking = async(payload) => {
         };
     }
 }
+
+export const updateBookingStatus = cache(async(id, status) => {
+    const {user} = (await getServerSession(authOptions)) || {};
+    if (!user) return {success: false};
+
+    const query = {_id: new ObjectId(id)};
+    const updatedDoc = {
+        $set: {
+            status: status
+        }
+    };
+    const result = await dbConnect("bookings").updateOne(query, updatedDoc);
+    if(result.modifiedCount){
+        revalidatePath("/my-bookings");
+        return{
+            success: true,
+            message: `Booking cancelled.`
+        };
+    }
+    else{
+        return{
+            success: false,
+            message: "Something went wrong. Try again."
+        };
+    }
+})
