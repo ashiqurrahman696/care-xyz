@@ -2,6 +2,8 @@
 
 import { authOptions } from "@/lib/authOptions";
 import { dbConnect } from "@/lib/dbConnect";
+import { orderInvoiceTemplate } from "@/lib/orderInvoice";
+import { sendEmail } from "@/lib/sendEmail";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
@@ -21,9 +23,18 @@ export const postBooking = async(payload) => {
     const newBooking = {...payload};
     const result = await dbConnect("bookings").insertOne(newBooking);
     if(result.acknowledged){
+        await sendEmail({
+            to: user.email,
+            subject: "Your Order Invoice - Care.xyz",
+            html: orderInvoiceTemplate({
+                orderId: result.insertedId.toString(),
+                item: newBooking,
+            }),
+        });
+
         return{
             success: true,
-            message: `Booking confirmed.`
+            message: `Booking confirmed. Check your email.`
         };
     }
     else{
