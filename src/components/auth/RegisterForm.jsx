@@ -1,7 +1,7 @@
 "use client";
 import { postUser } from '@/actions/server/auth';
 import { showAlert } from '@/utils/showAlert';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { SocialButton } from './SocialButton';
 
 const RegisterForm = () => {
@@ -54,7 +54,9 @@ const RegisterForm = () => {
                         <input type="password" name="password" className="input w-full" placeholder="Password" />
                         <button className="btn btn-info mt-4">Register</button>
                     </form>
-                    <SocialButton/>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <SocialButton/>
+                    </Suspense>
                 </div>
             </div>
         </div>
