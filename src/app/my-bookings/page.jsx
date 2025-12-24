@@ -2,6 +2,10 @@ import { getMyBookings } from '@/actions/server/booking';
 import MyBookingsTable from '@/components/table/MyBookingsTable';
 import React from 'react';
 
+export const metadata = {
+    title: "My Bookings",
+};
+
 const MyBookingPage = async() => {
     const myBookings = await getMyBookings();
     return (

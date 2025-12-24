@@ -2,6 +2,10 @@ import { getServices } from '@/actions/server/service';
 import ServiceCard from '@/components/cards/ServiceCard';
 import React from 'react';
 
+export const metadata = {
+    title: "All Service",
+};
+
 const ServicesPage = async() => {
     const services = await getServices();
     return (

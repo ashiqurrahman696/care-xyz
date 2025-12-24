@@ -3,6 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+export async function generateMetadata({ params }){
+    const { id } = await params;
+    const service = await getSingleService(id);
+    return {
+        title: service.service_name
+    }
+}
+
 const ServiceDetailsPage = async({params}) => {
     const { id } = await params;
     const service = await getSingleService(id);

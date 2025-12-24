@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Care.xyz",
+  title: {
+    default: "Care.xyz",
+    template: "%s | Care.xyz"
+  },
   description: "Care.xyz - a reliable and trusted care service for children, elderly, and other family members.",
 };
 
